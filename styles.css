@@ -1,0 +1,31 @@
+body {
+    background-color: #2e3538;
+}
+.site-nav {
+    float: right;
+}
+nav {
+    display: block;
+}
+.wrapper {
+    margin-right: auto;
+    margin-left: auto;
+}
+.clear-mods {
+    background-color: transparent;
+    opacity: .9;
+    border: none;
+    transition: background-color 0.1s, opacity 0.1s, transform 0.1s;
+}
+.clear-mods:active {
+    background-color: transparent;
+    opacity: 0.7;
+    transform: scale(0.95); /* Slightly shrink the button when clicked */
+}
+.clear-mods:hover {
+  opacity: 1;
+}
+
+input[type="checkbox"] {
+    display: none;
+}

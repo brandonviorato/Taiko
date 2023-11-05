@@ -1,0 +1,68 @@
+<html>
+    <head> 
+        <title>Taiko</title>
+        <link rel="stylesheet" href="styles.css">
+        <script src="script.js"></script>
+    </head>
+    <body>
+        <header class = "site-header">
+            <div class = "wrapper">
+                <a class = "site-title">Taiko PP calculator</a>
+                <nav class = "site-nav">
+                    <a class = "page-link" href = "https://github.com/leinigoe"  target="_blank">GitHub</a>
+                </nav>
+            </div>
+        </header>
+        <main class = "page-content">
+            <div class = "wrapper">
+                <h2>Taiko PP calculator</h2>
+                <br>
+                <br>
+                <div>
+                    <b>Star Rating(DT/HT Inclusive)</b>
+                    <br>
+                    <input min="0" value="5" id="strain" type="number" step="0.1">
+                    <br>
+                    <b>Maximum combo (Circle Count)</b>
+                    <br>
+                    <input value="500" id="numcircles" type="text">
+                    <br>
+                    <b>OD (Overall Difficulty)</b>
+                    <br>
+                    <input value="5" id="od-input" type="text" oninput="displayOD();">
+                    <br>
+                    <b>Misses</b>
+                    <br>
+                    <input value="0" id="misses" type="text">
+                    <br>
+                    <b>100's Hit</b>
+                    <br>
+                    <input value="0" id="100s" type="text" oninput="setActive('100s');" class="inactive">
+                    <br>
+                    <b>Accuracy</b>
+                    <br>
+                    <input value="99" id="acc" type="text" oninput="setActive('acc');" class="active">
+                    <br>
+                    <input id="EZ" type="checkbox">
+                    <label for="EZ"></label>
+                    <input id="HR" type="checkbox">
+                    <label for="HR"></label>
+                    <input id="HT" type="checkbox">
+                    <label for="HT"></label>
+                    <input id="DT" type="checkbox">
+                    <label for="DT"></label>
+                    <input id="HD" type="checkbox">
+                    <label for="HD"></label>
+                    <input id="FL" type="checkbox">
+                    <label for="FL"></label>
+                    <input id="NF" type="checkbox">
+                    <label for="NF" class = "No-Fail"></label>
+                    <button class = "clear-mods">
+                        <img src = "img/mod_no-mod.png" alt = "Clear mods">
+                    </button>
+                    <div id="pp">188.48 pp</div>
+                </div>
+            </div>
+        </main>
+    </body>
+</html>
