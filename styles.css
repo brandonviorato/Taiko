@@ -29,3 +29,6 @@ nav {
 input[type="checkbox"] {
     display: none;
 }
+.input-fields {
+    background-color: blue;
+}
