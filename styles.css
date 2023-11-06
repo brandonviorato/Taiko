@@ -1,7 +1,12 @@
 @font-face {
     font-family: "Torus";
     src: url("/fonts/Torus\ Regular.otf");
-  }
+}
+  
+header{
+    background-color: #3986ac;
+    height: 50;
+}
 
 body {
     font-family: "Torus";
@@ -15,6 +20,7 @@ nav {
     display: block;
 }
 .wrapper {
+    max-width: 960px;
     margin-right: auto;
     margin-left: auto;
 }
