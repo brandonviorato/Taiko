@@ -1,4 +1,11 @@
+@font-face {
+    font-family: "Torus";
+    src: url("/fonts/Torus\ Regular.otf");
+  }
+
 body {
+    font-family: "Torus";
+    color: white;
     background-color: #171A1C;
 }
 .site-nav {
@@ -30,5 +37,6 @@ input[type="checkbox"] {
     display: none;
 }
 .input-fields {
+    color: white;
     background-color: #22282a;
 }
