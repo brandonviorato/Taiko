@@ -25,23 +25,23 @@
                     <br>
                     <b>Maximum combo (Circle Count)</b>
                     <br>
-                    <input value="500" id="numcircles" type="text">
+                    <input min = "0" value="500" id="numcircles" type="number">
                     <br>
                     <b>OD (Overall Difficulty)</b>
                     <br>
-                    <input value="5" id="od-input" type="text" oninput="displayOD();">
+                    <input value="5" id="od-input" type="number" oninput="displayOD();">
                     <br>
                     <b>Misses</b>
                     <br>
-                    <input value="0" id="misses" type="text">
+                    <input value="0" id="misses" type="number">
                     <br>
                     <b>100's Hit</b>
                     <br>
-                    <input value="0" id="100s" type="text" oninput="setActive('100s');" class="inactive">
+                    <input value="0" id="100s" type="number" oninput="setActive('100s');" class="inactive">
                     <br>
                     <b>Accuracy</b>
                     <br>
-                    <input value="99" id="acc" type="text" oninput="setActive('acc');" class="active">
+                    <input value="99" id="acc" type="number" oninput="setActive('acc');" class="active">
                     <br>
                     <input id="EZ" type="checkbox">
                     <label for="EZ"></label>
