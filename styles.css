@@ -1,5 +1,5 @@
 body {
-    background-color: #2e3538;
+    background-color: #171A1C;
 }
 .site-nav {
     float: right;
@@ -30,5 +30,5 @@ input[type="checkbox"] {
     display: none;
 }
 .input-fields {
-    background-color: blue;
+    background-color: #22282a;
 }
