@@ -4,6 +4,7 @@
 }
   
 header{
+    /* border: 1px solid yellow; */
     background-color: #3986ac;
     height: 50px;
     margin: 0; /* Reset margin */
@@ -17,8 +18,21 @@ body {
     margin: 0; /* Reset margin */
     padding: 0; /* Reset padding */
 }
+
+a {
+    /* border: 1px solid red;  */
+}
+.site-title {
+    font-size: 24;
+    position: relative; Top: 10px;
+    padding-left: 7.5px;
+
+}
+
 .site-nav {
     float: right;
+    position: relative; Top: 6.5px; /* This looks more visually balanced */
+    padding-right: 7.5px;
 }
 nav {
     display: block;
