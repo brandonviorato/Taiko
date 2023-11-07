@@ -19,9 +19,6 @@ body {
     padding: 0; /* Reset padding */
 }
 
-a {
-    /* border: 1px solid red;  */
-}
 .site-title {
     font-size: 24;
     position: relative; Top: 10px;
@@ -43,6 +40,8 @@ nav {
     margin-left: auto;
 }
 .clear-mods {
+    scale: 1.05;
+    padding-left: 1px;
     background-color: transparent;
     opacity: .9;
     border: none;
@@ -60,6 +59,7 @@ nav {
 input[type="checkbox"] {
     display: none;
 }
+
 .input-fields {
     color: white;
     background-color: #22282a;
