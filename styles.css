@@ -60,7 +60,18 @@ input[type="checkbox"] {
     display: none;
 }
 
+.content-title {
+    padding-left: 14px;
+}
+
 .input-fields {
     color: white;
     background-color: #22282a;
+    padding-left: 14px;
+}
+
+
+
+.wrapper {
+    border: 1px solid white;
 }
