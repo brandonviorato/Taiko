@@ -5,13 +5,17 @@
   
 header{
     background-color: #3986ac;
-    height: 50;
+    height: 50px;
+    margin: 0; /* Reset margin */
+    padding: 0; /* Reset padding */
 }
 
 body {
     font-family: "Torus";
     color: white;
     background-color: #171A1C;
+    margin: 0; /* Reset margin */
+    padding: 0; /* Reset padding */
 }
 .site-nav {
     float: right;
