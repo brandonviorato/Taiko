@@ -1,17 +1,27 @@
 // only works if this exists out here
-
-let starRating = document.getElementById("strain").value;// strain
-let od = document.getElementById("od-input").value; // OD value
-let maxCombo = document.getElementById("numcircles").value;
-let missCount = document.getElementById("misses").value;
-let hitWindow300 = calcHitWindow(od); // OD for 300 in ms
-let accuracy = document.getElementById("acc").value / 100;
+// NOTE: this can be commented out if there is no "let" in front of variables in calcPP
+// let starRating = document.getElementById("strain").value;// strain
+// let od = document.getElementById("od-input").value; // OD value
+// let maxCombo = document.getElementById("numcircles").value;
+// let missCount = document.getElementById("misses").value;
+// let hitWindow300 = calcHitWindow(od); // OD for 300 in ms
+// let accuracy = document.getElementById("acc").value / 100;
 
 // currently works.
 window.addEventListener("DOMContentLoaded", function () {
     console.log("test");
 
-    let pp = calcPP();
+    calcPP();
+
+    var ez = document.getElementById("EZ");
+    var hr = document.getElementById("HR");
+    var ht = document.getElementById("HT");
+    var dt = document.getElementById("DT");
+
+    ez.addEventListener("click", uncheck(hr));
+    hr.addEventListener("click", uncheck(ez));
+    ht.addEventListener("click", uncheck(dt));
+    dt.addEventListener("click", uncheck(ht));
 
     var inputs = document.getElementsByTagName('input');
     for (var i in inputs) {
@@ -19,18 +29,27 @@ window.addEventListener("DOMContentLoaded", function () {
             case "number":
                 inputs[i].addEventListener("input", calcPP);
                 break;
+            case "checkbox":
+                inputs[i].addEventListener("click", calcPP);
+                break;
         }
     }
 });
 
+function uncheck(elem) {
+    return function () {
+        elem.checked = false;
+    };
+}
+
 // scales OD based on selected mods.
 function scaleOd(od) {
-    // if (document.getElementById("EZ").checked) { // ez is selected
-    //     od /= 2;
-    // }
-    // if (document.getElementById("HR").checked) { // hr is selected
-    //     od *= 1.4;
-    // }
+    if (document.getElementById("EZ").checked) { // ez is selected
+        od /= 2;
+    }
+    if (document.getElementById("HR").checked) { // hr is selected
+        od *= 1.4;
+    }
     od = Math.max(Math.min(od, 10), 0); // OD is less than 10 and greater than 0
     return od;
 }
@@ -47,13 +66,13 @@ function calcHitWindow(od) {
         hitWindow -= (35 - 50) * (5 - od) / 5; // loosen hit window
     }
 
-    // // adjust hit window based on selected mods
-    // if (document.getElementById("HT").checked) {
-    //     hitWindow /= 0.75;
-    // }
-    // if (document.getElementById("DT").checked) {
-    //     hitWindow /= 1.5;
-    // }
+    // adjust hit window based on selected mods
+    if (document.getElementById("HT").checked) {
+        hitWindow /= 0.75;
+    }
+    if (document.getElementById("DT").checked) {
+        hitWindow /= 1.5;
+    }
     
     return Math.round(hitWindow * 100) / 100; // 2 decimals NOTE: messes with accuracy of calculations
 }
@@ -68,8 +87,6 @@ function calcDifficultyValue(starRating, maxCombo, effectiveMissCount, accuracy)
     difficultyValue *= lengthBonus;
 
     difficultyValue *= Math.pow(0.986, effectiveMissCount);
-
-    //TO BE ADDED: MOD BONUSES
 
     return difficultyValue * Math.pow(accuracy, 2.0);
 }
@@ -113,11 +130,36 @@ function calcPP() {
     hitWindow300 = calcHitWindow(od); // OD for 300 in ms
     accuracy = document.getElementById("acc").value / 100;
 
+    // calculate individual values
     let totalValue;
     let multiplier = 1.13;
     let effectiveMissCount = calcEffectiveMissCount(maxCombo, missCount);
     let difficultyValue = calcDifficultyValue(starRating, maxCombo, effectiveMissCount, accuracy);
     let accuracyValue = calcAccuracyValue(hitWindow300, accuracy);
+
+    // calculate mod bonuses
+    if (document.getElementById("HD").checked) {
+        multiplier *= 1.075;
+        difficultyValue *= 1.025;
+    }
+
+    if (document.getElementById("EZ").checked) {
+        multiplier *= 0.975;
+        difficultyValue *= 0.985;
+    }
+
+    // if (document.getElementById("FL").checked) {
+    //     difficultyValue *= 1.05 * strainLengthBonus
+    // }
+
+    if (document.getElementById("HR").checked) {
+        difficultyValue *= 1.05;
+    }
+
+    // if (document.getElementById("HD").checked && document.getElementById("FL").checked) {
+    //     accValue *= Math.max(1.050, 1.075 * accLengthBonus);
+    // }
+
 
     // final PP calculation
     totalValue = Math.pow(Math.pow(difficultyValue, 1.1) + Math.pow(accuracyValue, 1.1), 1.0 / 1.1) * multiplier;
