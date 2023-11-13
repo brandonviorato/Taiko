@@ -2,7 +2,8 @@
     <head> 
         <title>Taiko PP Calculator</title>
         <link rel="stylesheet" href="styles.css">
-        <script src="script.js"></script>
+        <!-- reworked script works when defer is in script -->
+        <script src="script.js" defer></script> 
     </head>
     <body>
         <header class = "site-header">
@@ -31,7 +32,7 @@
                     <br>
                     <b>OD (Overall Difficulty)</b>
                     <br>
-                    <input value="5" id="od-input" type="number" oninput="displayOD();">
+                    <input value="5" id="od-input" type="number">
                     <br>
                     <b>Misses</b>
                     <br>
@@ -39,11 +40,11 @@
                     <br>
                     <b>100's Hit</b>
                     <br>
-                    <input value="0" id="100s" type="number" oninput="setActive('100s');" class="inactive">
+                    <input value="0" id="100s" type="number">
                     <br>
                     <b>Accuracy</b>
                     <br>
-                    <input value="99" id="acc" type="number" oninput="setActive('acc');" class="active">
+                    <input value="99" id="acc" type="number">
                     <br>
                     <br>
                     <input id="EZ" type="checkbox">
