@@ -1,12 +1,3 @@
-// only works if this exists out here
-// NOTE: this can be commented out if there is no "let" in front of variables in calcPP
-// let starRating = document.getElementById("strain").value;// strain
-// let od = document.getElementById("od-input").value; // OD value
-// let maxCombo = document.getElementById("numcircles").value;
-// let missCount = document.getElementById("misses").value;
-// let hitWindow300 = calcHitWindow(od); // OD for 300 in ms
-// let accuracy = document.getElementById("acc").value / 100;
-
 // currently works.
 window.addEventListener("DOMContentLoaded", function () {
     console.log("test");
@@ -105,7 +96,14 @@ function calcDifficultyValue(starRating, maxCombo, effectiveMissCount, accuracy)
 
     difficultyValue *= Math.pow(0.986, effectiveMissCount);
 
-    return difficultyValue * Math.pow(accuracy, 2.0);
+    difficultyValue *= Math.pow(accuracy, 2.0);
+
+    // FL bonus
+    if (document.getElementById("FL").checked) {
+        difficultyValue *= 1.05 * lengthBonus
+    }
+
+    return difficultyValue;
 }
 // calculates accuracy value
 function calcAccuracyValue(hitWindow300, accuracy) {
@@ -120,10 +118,11 @@ function calcAccuracyValue(hitWindow300, accuracy) {
     lengthBonus = Math.min(1.15, Math.pow(maxCombo / 1500.0, 0.3));
 
     accuracyValue *= lengthBonus;
-
-    // // Slight HDFL Bonus for accuracy. A clamp is used to prevent against negative values. TO BE IMPLEMENTED
-    // if (score.Mods.Any(m => m is ModFlashlight<TaikoHitObject>) && score.Mods.Any(m => m is ModHidden) && !isConvert)
-    // accuracyValue *= Math.Max(1.0, 1.1 * lengthBonus);
+    
+    // HDFL bonus
+    if (document.getElementById("HD").checked && document.getElementById("FL").checked) {
+        accuracyValue *= Math.max(1.050, 1.075 * lengthBonus);
+    }
 
     return accuracyValue;
 }
@@ -165,18 +164,9 @@ function calcPP() {
         difficultyValue *= 0.985;
     }
 
-    // if (document.getElementById("FL").checked) {
-    //     difficultyValue *= 1.05 * strainLengthBonus
-    // }
-
     if (document.getElementById("HR").checked) {
         difficultyValue *= 1.05;
     }
-
-    // if (document.getElementById("HD").checked && document.getElementById("FL").checked) {
-    //     accValue *= Math.max(1.050, 1.075 * accLengthBonus);
-    // }
-
 
     // final PP calculation
     totalValue = Math.pow(Math.pow(difficultyValue, 1.1) + Math.pow(accuracyValue, 1.1), 1.0 / 1.1) * multiplier;
