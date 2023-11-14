@@ -17,11 +17,16 @@ window.addEventListener("DOMContentLoaded", function () {
     var hr = document.getElementById("HR");
     var ht = document.getElementById("HT");
     var dt = document.getElementById("DT");
+    var hd = document.getElementById("HD");
+    var fl = document.getElementById("FL");
+    var clear = document.getElementById("clear-mods");
+
 
     ez.addEventListener("click", uncheck(hr));
     hr.addEventListener("click", uncheck(ez));
     ht.addEventListener("click", uncheck(dt));
     dt.addEventListener("click", uncheck(ht));
+    clear.addEventListener("click", uncheckAll(ez, ht, hd, hr, dt, fl));
 
     var inputs = document.getElementsByTagName('input');
     for (var i in inputs) {
@@ -35,6 +40,18 @@ window.addEventListener("DOMContentLoaded", function () {
         }
     }
 });
+
+function uncheckAll(ez, ht, hd, hr, dt, fl) {
+    return function () {
+        ez.checked = false;
+        ht.checked = false;
+        hd.checked = false;
+        hr.checked = false;
+        dt.checked = false;
+        fl.checked = false;
+        calcPP(); // recalculate PP
+    }
+}
 
 function uncheck(elem) {
     return function () {

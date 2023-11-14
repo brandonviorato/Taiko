@@ -39,20 +39,20 @@ nav {
     margin-right: auto;
     margin-left: auto;
 }
-.clear-mods {
+#clear-mods {
     scale: 1.05;
     padding-left: 1px;
     background-color: transparent;
-    opacity: .9;
+    opacity: .75;
     border: none;
     transition: background-color 0.1s, opacity 0.1s, transform 0.1s;
 }
-.clear-mods:active {
+#clear-mods:active {
     background-color: transparent;
     opacity: 0.65;
     transform: scale(0.95); /* Slightly shrink the button when clicked */
 }
-.clear-mods:hover {
+#clear-mods:hover {
   opacity: 1;
 }
 
