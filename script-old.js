@@ -73,7 +73,7 @@ function hitWindow(od) {
     if (document.getElementById("DT").checked) {
         hitWindow /= 1.5;
     }
-    // 2 decimals
+    // round to 2 decimals
     return Math.round(hitWindow * 100) / 100;
 };
 
