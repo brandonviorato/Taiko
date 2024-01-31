@@ -1,6 +1,8 @@
 @font-face {
     font-family: "Torus";
-    src: url("fonts/TorusRegular.otf");
+    src: url("./fonts/TorusRegular.otf") format('opentype');
+    font-weight: normal;
+    font-style: normal;
 }
   
 header{
